@@ -10,6 +10,7 @@ import java.util.List;
 @Mapper
 public interface WebMapper {
 
+    // 获取所有功能信息
     @Select("SELECT " +
             "id, " +
             "fun, " +
@@ -28,6 +29,7 @@ public interface WebMapper {
             "FROM function")
     List<Function> getAllFunctions();
 
+    // 获取所有用户信息
     @Select("SELECT " +
             "student_id AS studentId, " +
             "phone_number AS phoneNumber, " +

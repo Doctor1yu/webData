@@ -17,11 +17,13 @@ public class WebController {
     @Autowired
     private WebService webService;
 
+    //获取所有订单参数
     @GetMapping("/functions")
     public List<Function> getAllFunctions() {
         return webService.getAllFunctions();
     }
 
+    //获取所有用户列表
     @GetMapping("/users")
     public List<User> getAllUsers() {
         return webService.getAllUsers();

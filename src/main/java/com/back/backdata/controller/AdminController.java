@@ -23,6 +23,7 @@ public class AdminController {
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
 
+    //管理员登陆
     @PostMapping("/login")
     public Result login(Admin user) {
         try {
@@ -44,6 +45,7 @@ public class AdminController {
         }
     }
 
+    //更改管理员密码
     @PatchMapping("/updatePwd")
     public Result updatePassword(@RequestBody Map<String, String> params) {
         // 获取请求参数

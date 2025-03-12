@@ -26,6 +26,7 @@ public class AdminServiceImpl implements AdminService {
         return admin;
     }
 
+    // 更新管理员密码
     @Override
     public void updateAdminPassword(Integer id, String oldPassword, String newPassword) {
         // 查询用户信息
@@ -38,11 +39,13 @@ public class AdminServiceImpl implements AdminService {
         adminMapper.updatePassword(id, newPassword);
     }
 
+    // 根据ID查询管理员信息
     @Override
     public Admin findById(Integer id) {
         return adminMapper.findById(id);
     }
 
+    // 根据用户名查询管理员信息
     @Override
     public Admin findByUsername(String username) {
         return adminMapper.findByUsername(username);

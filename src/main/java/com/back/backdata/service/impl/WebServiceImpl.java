@@ -14,11 +14,13 @@ public class WebServiceImpl implements WebService {
     @Autowired
     private WebMapper webMapper;
 
+    // 获取所有功能信息
     @Override
     public List<Function> getAllFunctions() {
         return webMapper.getAllFunctions();
     }
 
+    // 获取所有用户信息
     @Override
     public List<User> getAllUsers() {
         return webMapper.getAllUsers();
