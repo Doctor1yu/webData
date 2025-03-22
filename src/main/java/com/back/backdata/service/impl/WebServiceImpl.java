@@ -1,7 +1,7 @@
 package com.back.backdata.service.impl;
 
 import com.back.backdata.mapper.WebMapper;
-import com.back.backdata.pojo.Function;
+import com.back.backdata.pojo.Orders;
 import com.back.backdata.pojo.User;
 import com.back.backdata.service.WebService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +16,8 @@ public class WebServiceImpl implements WebService {
 
     // 获取所有功能信息
     @Override
-    public List<Function> getAllFunctions() {
-        return webMapper.getAllFunctions();
+    public List<Orders> getAllOrders() {
+        return webMapper.getAllOrders();
     }
 
     // 获取所有用户信息

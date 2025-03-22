@@ -1,6 +1,6 @@
 package com.back.backdata.controller;
 
-import com.back.backdata.pojo.Function;
+import com.back.backdata.pojo.Orders;
 import com.back.backdata.pojo.User;
 import com.back.backdata.service.WebService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +19,8 @@ public class WebController {
 
     //获取所有订单参数
     @GetMapping("/functions")
-    public List<Function> getAllFunctions() {
-        return webService.getAllFunctions();
+    public List<Orders> getAllFunctions() {
+        return webService.getAllOrders();
     }
 
     //获取所有用户列表

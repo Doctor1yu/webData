@@ -25,10 +25,10 @@ public class AdminController {
 
     //管理员登陆
     @PostMapping("/login")
-    public Result login(Admin user) {
+    public Result login(Admin admin) {
         try {
             // 使用loginAdmin方法替代login方法
-            Admin loginAdmin = adminService.loginAdmin(user.getUsername(), user.getPassword());
+            Admin loginAdmin = adminService.loginAdmin(admin.getUsername(), admin.getPassword());
 
             // 生成token
             Map<String, Object> claims = new HashMap<>();
@@ -37,7 +37,7 @@ public class AdminController {
             String token = JwtUtil.genToken(claims);
 
             // 存储到redis
-            stringRedisTemplate.opsForValue().set(token, token, 12, TimeUnit.HOURS);
+            stringRedisTemplate.opsForValue().set(token, token, 1, TimeUnit.HOURS);
 
             return Result.success(token);
         } catch (RuntimeException e) {

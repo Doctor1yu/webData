@@ -19,9 +19,7 @@ public class LoginInterceptor implements HandlerInterceptor {
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
     @Override
-    public boolean preHandle(@NonNull HttpServletRequest request, 
-                            @NonNull HttpServletResponse response, 
-                            @NonNull Object handler) {
+    public boolean preHandle(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull Object handler) {
         //令牌验证
         String token = request.getHeader("Authorization");
         //验证token
@@ -48,10 +46,7 @@ public class LoginInterceptor implements HandlerInterceptor {
     }
 
     @Override
-    public void afterCompletion(@NonNull HttpServletRequest request, 
-                               @NonNull HttpServletResponse response, 
-                               @NonNull Object handler, 
-                               @Nullable Exception ex) {
+    public void afterCompletion(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull Object handler, @Nullable Exception ex) {
         //清空ThreadLocal中的数据
         ThreadLocalUtil.remove();
     }
