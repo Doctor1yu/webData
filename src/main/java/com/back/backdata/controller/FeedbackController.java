@@ -1,0 +1,34 @@
+package com.back.backdata.controller;
+
+import com.back.backdata.pojo.Result;
+import com.back.backdata.service.FeedbackService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/feedback")
+public class FeedbackController {
+
+    @Autowired
+    private FeedbackService feedbackService;
+
+    @PatchMapping("/status")
+    public Result updateFeedbackStatus(@RequestParam int id, @RequestParam int status) {
+        int result = feedbackService.updateFeedbackStatus(id, status);
+        if (result > 0) {
+            return Result.success();
+        } else {
+            return Result.error("更新状态失败，反馈可能不存在");
+        }
+    }
+
+    @DeleteMapping("/delete")
+    public Result deleteFeedbackById(@RequestParam int id) {
+        int result = feedbackService.deleteFeedbackById(id);
+        if (result > 0) {
+            return Result.success();
+        } else {
+            return Result.error("删除失败，反馈可能不存在");
+        }
+    }
+}

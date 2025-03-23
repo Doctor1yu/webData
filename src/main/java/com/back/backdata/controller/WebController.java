@@ -20,7 +20,7 @@ public class WebController {
     private WebService webService;
 
     //获取所有订单参数
-    @GetMapping("/functions")
+    @GetMapping("/orders")
     public Result<List<Orders>> getAllFunctions() {
         List<Orders> orders = webService.getAllOrders();
         return Result.success(orders);
