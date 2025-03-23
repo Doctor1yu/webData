@@ -12,16 +12,6 @@ public class FeedbackController {
     @Autowired
     private FeedbackService feedbackService;
 
-    @PatchMapping("/status")
-    public Result updateFeedbackStatus(@RequestParam int id, @RequestParam int status) {
-        int result = feedbackService.updateFeedbackStatus(id, status);
-        if (result > 0) {
-            return Result.success();
-        } else {
-            return Result.error("更新状态失败，反馈可能不存在");
-        }
-    }
-
     @DeleteMapping("/delete")
     public Result deleteFeedbackById(@RequestParam int id) {
         int result = feedbackService.deleteFeedbackById(id);
@@ -29,6 +19,16 @@ public class FeedbackController {
             return Result.success();
         } else {
             return Result.error("删除失败，反馈可能不存在");
+        }
+    }
+
+    @PutMapping("/update")
+    public Result updateFeedbackStatusById(@RequestParam int id, @RequestParam int status) {
+        int result = feedbackService.updateFeedbackStatusById(id, status);
+        if (result > 0) {
+            return Result.success();
+        } else {
+            return Result.error("更新失败，反馈可能不存在");
         }
     }
 }

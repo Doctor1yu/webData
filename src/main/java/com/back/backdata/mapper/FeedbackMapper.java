@@ -6,9 +6,11 @@ import org.apache.ibatis.annotations.Delete;
 
 @Mapper
 public interface FeedbackMapper {
-    @Update("UPDATE feedback SET status = #{status} WHERE id = #{id}")
-    int updateFeedbackStatus(int id, int status);
+
 
     @Delete("DELETE FROM feedback WHERE id = #{id}")
     int deleteFeedbackById(int id);
+
+    @Update("UPDATE feedback SET status = #{status}, updated_at = NOW() WHERE id = #{id}")
+    int updateFeedbackStatusById(int id, int status);
 }
