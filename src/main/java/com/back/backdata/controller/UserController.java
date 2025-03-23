@@ -1,7 +1,6 @@
 package com.back.backdata.controller;
 
 import com.back.backdata.pojo.Result;
-import com.back.backdata.pojo.User;
 import com.back.backdata.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
