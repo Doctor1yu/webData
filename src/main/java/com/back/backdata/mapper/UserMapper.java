@@ -8,8 +8,14 @@ import java.util.List;
 @Mapper
 public interface UserMapper {
 
-    @Update("UPDATE user SET password = #{newPassword} WHERE id = #{id}")
-    void updatePassword(@Param("id") int id, @Param("newPassword") String newPassword);
+    @Select("SELECT * FROM user WHERE id = #{id}")
+    User getUserById(int id);
+
+    @Select("SELECT * FROM user WHERE student_id = #{studentId}")
+    User getUserByStudentId(String studentId);
+
+    @Update("UPDATE user SET password = #{newPassword} WHERE student_id = #{studentId}")
+    void updatePasswordByStudentId(@Param("studentId") String studentId, @Param("newPassword") String newPassword);
 
     @Update("UPDATE user SET status = #{status} WHERE id = #{id}")
     void updateStatus(@Param("id") int id, @Param("status") String status);

@@ -13,20 +13,20 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @PatchMapping("/{id}/password")
-    public Result<Void> updatePassword(@PathVariable int id, @RequestParam String newPassword) {
-        userService.updatePassword(id, newPassword);
+    @PatchMapping("/password")
+    public Result resetPassword(@RequestParam String studentId) {
+        userService.resetPassword(studentId);
         return Result.success();
     }
 
-    @PatchMapping("/{id}/status")
-    public Result<Void> updateStatus(@PathVariable int id, @RequestParam String status) {
+    @PatchMapping("status")
+    public Result updateStatus(@RequestParam int id, @RequestParam String status) {
         userService.updateStatus(id, status);
         return Result.success();
     }
 
-    @DeleteMapping("/{id}")
-    public Result<Void> deleteUser(@PathVariable int id) {
+    @DeleteMapping("/delete")
+    public Result deleteUser(@RequestParam int id) {
         userService.deleteUser(id);
         return Result.success();
     }

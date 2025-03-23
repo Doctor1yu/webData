@@ -15,11 +15,6 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Override
-    public void updatePassword(int id, String newPassword) {
-        userMapper.updatePassword(id, newPassword);
-    }
-
-    @Override
     public void updateStatus(int id, String status) {
         userMapper.updateStatus(id, status);
     }
@@ -27,5 +22,14 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteUser(int id) {
         userMapper.deleteUser(id);
+    }
+
+    @Override
+    public void resetPassword(String studentId) {
+        User user = userMapper.getUserByStudentId(studentId);
+        if (user != null) {
+            String newPassword = studentId + "user";  // 使用学号生成新密码
+            userMapper.updatePasswordByStudentId(studentId, newPassword);
+        }
     }
 } 
