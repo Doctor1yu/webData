@@ -10,6 +10,7 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -53,6 +54,7 @@ public class AdminController {
         String newPwd = params.get("new_pwd");
         String rePwd = params.get("re_pwd");
         
+        // 参数校验
         if (oldPwd == null || newPwd == null || rePwd == null) {
             return Result.error("缺少必要参数");
         }
@@ -68,7 +70,44 @@ public class AdminController {
 
             // 修改密码
             adminService.updateAdminPassword(id, oldPwd, newPwd);
-            return Result.success();
+            return Result.success("密码修改成功");
+        } catch (RuntimeException e) {
+            return Result.error(e.getMessage());
+        }
+    }
+
+    @GetMapping("/all")
+    public Result getAllAdmins() {
+        try {
+            List<Admin> admins = adminService.getAllAdmins();
+            return Result.success(admins);
+        } catch (Exception e) {
+            return Result.error("获取管理员列表失败");
+        }
+    }
+
+    @PostMapping("/add")
+    public Result addAdmin(@RequestBody Map<String, String> params) {
+        String username = params.get("username");
+        String password = params.get("password");
+        
+        if (username == null || password == null) {
+            return Result.error("用户名和密码不能为空");
+        }
+        
+        try {
+            adminService.addAdmin(username, password);
+            return Result.success("管理员添加成功");
+        } catch (RuntimeException e) {
+            return Result.error(e.getMessage());
+        }
+    }
+
+    @DeleteMapping("/delete")
+    public Result deleteAdminById(@RequestParam Integer id) {
+        try {
+            adminService.deleteAdminById(id);
+            return Result.success("管理员删除成功");
         } catch (RuntimeException e) {
             return Result.error(e.getMessage());
         }

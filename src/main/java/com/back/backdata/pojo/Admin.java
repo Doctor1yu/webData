@@ -10,4 +10,5 @@ public class Admin {
     private String username; // 用户名
     private String password; // 密码
     private Timestamp createdAt; // 创建时间
+    private Timestamp updateAt; // 更新时间
 }

@@ -1,9 +1,9 @@
 package com.back.backdata.mapper;
 
 import com.back.backdata.pojo.*;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
+
+import java.util.List;
 
 @Mapper
 public interface AdminMapper {
@@ -18,5 +18,15 @@ public interface AdminMapper {
 
     //更新管理员密码
     @Update("update admin set password = #{password} where id = #{id}")
-    void updatePassword(Integer id,String password);
+    void updatePassword(Integer id, String password);
+
+    @Select("select * from admin")
+    List<Admin> findAll();
+
+    @Insert("insert into admin (username, password, created_at, update_at) " +
+            "values (#{username}, #{password}, #{createdAt}, #{updateAt})")
+    void insertAdmin(Admin admin);
+
+    @Delete("delete from admin where id = #{id}")
+    void deleteAdminById(Integer id);
 }

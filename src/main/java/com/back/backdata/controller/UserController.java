@@ -19,8 +19,8 @@ public class UserController {
     }
 
     @PatchMapping("status")
-    public Result updateStatus(@RequestParam int id, @RequestParam String status) {
-        userService.updateStatus(id, status);
+    public Result updateStatus(@RequestParam String studentId, @RequestParam String status) {
+        userService.updateStatus(studentId, status);
         return Result.success();
     }
 

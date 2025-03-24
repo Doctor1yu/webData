@@ -1,6 +1,7 @@
 package com.back.backdata.service;
 
 import com.back.backdata.pojo.Admin;
+import java.util.List;
 
 public interface AdminService {
     // 管理员登录
@@ -14,4 +15,13 @@ public interface AdminService {
 
     // 根据用户名查询管理员信息
     Admin findByUsername(String username);
+
+    // 获取所有管理员信息
+    List<Admin> getAllAdmins();
+    
+    // 添加管理员
+    void addAdmin(String username, String password);
+
+    // 根据ID删除管理员
+    void deleteAdminById(Integer id);
 } 
