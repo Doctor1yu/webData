@@ -17,7 +17,7 @@ public interface AdminMapper {
     Admin findById(Integer id);
 
     // 更新管理员密码
-    @Update("update admin set password = #{password} where id = #{id}")
+    @Update("update admin set password = #{password}, update_at = now() where id = #{id}")
     void updatePassword(Integer id, String password);
 
     // 获取所有管理员信息
