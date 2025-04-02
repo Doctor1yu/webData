@@ -1,9 +1,11 @@
 package com.back.backdata.service.impl;
 
 import com.back.backdata.mapper.WebMapper;
+import com.back.backdata.pojo.Applications;
 import com.back.backdata.pojo.Orders;
 import com.back.backdata.pojo.User;
 import com.back.backdata.pojo.Feedback;
+import com.back.backdata.pojo.Rotation;
 import com.back.backdata.service.WebService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,5 +33,16 @@ public class WebServiceImpl implements WebService {
     @Override
     public List<Feedback> getAllFeedbacks() {
         return webMapper.getAllFeedbacks();
+    }
+
+    // 获取所有申请信息
+    @Override
+    public List<Applications> getAllApplications() {
+        return webMapper.getAllApplications();
+    }
+
+    @Override
+    public List<Rotation> getAllRotations() {
+        return webMapper.getAllRotations();
     }
 }

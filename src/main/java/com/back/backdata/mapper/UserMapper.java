@@ -21,4 +21,8 @@ public interface UserMapper {
     // 根据ID删除用户
     @Delete("DELETE FROM user WHERE id = #{id}")
     void deleteUser(int id);
+
+    // 根据学号更新用户角色
+    @Update("UPDATE user SET role = #{role} WHERE student_id = #{studentId}")
+    void updateUserRole(@Param("studentId") String studentId, @Param("role") int role);
 } 

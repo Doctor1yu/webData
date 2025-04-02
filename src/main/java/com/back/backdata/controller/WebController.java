@@ -1,9 +1,6 @@
 package com.back.backdata.controller;
 
-import com.back.backdata.pojo.Orders;
-import com.back.backdata.pojo.Result;
-import com.back.backdata.pojo.User;
-import com.back.backdata.pojo.Feedback;
+import com.back.backdata.pojo.*;
 import com.back.backdata.service.WebService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,5 +35,19 @@ public class WebController {
     public Result<List<Feedback>> getAllFeedbacks() {
         List<Feedback> feedbacks = webService.getAllFeedbacks();
         return Result.success(feedbacks);
+    }
+
+    // 获取所有申请列表
+    @GetMapping("/applications")
+    public Result<List<Applications>> getAllApplications() {
+        List<Applications> applications = webService.getAllApplications();
+        return Result.success(applications);
+    }
+
+    // 获取所有轮播图列表
+    @GetMapping("/rotations")
+    public Result<List<Rotation>> getAllRotations() {
+        List<Rotation> rotations = webService.getAllRotations();
+        return Result.success(rotations);
     }
 }
