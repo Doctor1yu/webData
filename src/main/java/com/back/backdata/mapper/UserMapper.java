@@ -25,4 +25,8 @@ public interface UserMapper {
     // 根据学号更新用户角色
     @Update("UPDATE user SET role = #{role} WHERE student_id = #{studentId}")
     void updateUserRole(@Param("studentId") String studentId, @Param("role") int role);
+
+    // 根据学号更新用户申请状态
+    @Update("UPDATE user SET application_status = #{status} WHERE student_id = #{studentId}")
+    void updateUserApplicationStatus(@Param("studentId") String studentId, @Param("status") String status);
 } 

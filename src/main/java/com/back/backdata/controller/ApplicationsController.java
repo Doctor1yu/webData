@@ -18,13 +18,13 @@ public class ApplicationsController {
 
     @PatchMapping("/status")
     public Result updateApplicationStatus(
-            @RequestParam String studentId,
+            @RequestParam int id,
             @RequestParam String status,
             @RequestParam String remark,
             @RequestParam String reviewerName) {
         
         Timestamp reviewedAt = new Timestamp(System.currentTimeMillis());
-        applicationsService.updateApplicationStatus(studentId, status, remark, reviewerName, reviewedAt);
+        applicationsService.updateApplicationStatus(id, status, remark, reviewerName, reviewedAt);
         return Result.success();
     }
 }
