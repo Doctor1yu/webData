@@ -12,6 +12,7 @@ public class Applications {
     private String status; //申请状态（1:已提交，2:未提交，3:通过，4:拒绝）默认：1
     private String reviewerName; // 审核人用户名
     private String remark; // 审核备注
+    private String collect_url; // 收款码
     private Timestamp appliedAt; // 申请时间
     private Timestamp reviewedAt; // 审核时间
 }
