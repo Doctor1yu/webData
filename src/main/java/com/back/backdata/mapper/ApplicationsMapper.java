@@ -11,4 +11,7 @@ public interface ApplicationsMapper {
 
     @Select("SELECT student_id FROM applications WHERE id = #{id}")
     String getStudentIdById(int id);
+
+    @Select("SELECT collect_url FROM applications WHERE id = #{id}")
+    String getCollectUrlById(int id);
 }

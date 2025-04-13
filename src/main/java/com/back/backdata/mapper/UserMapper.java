@@ -29,4 +29,8 @@ public interface UserMapper {
     // 根据学号更新用户申请状态
     @Update("UPDATE user SET application_status = #{status} WHERE student_id = #{studentId}")
     void updateUserApplicationStatus(@Param("studentId") String studentId, @Param("status") String status);
+
+    // 更新用户收款码
+    @Update("UPDATE user SET collect_url = #{collectUrl} WHERE student_id = #{studentId}")
+    void updateUserCollectUrl(String studentId, String collectUrl);
 } 
