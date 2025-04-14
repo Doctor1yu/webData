@@ -11,7 +11,7 @@ public interface FeedbackMapper {
     @Delete("DELETE FROM feedback WHERE id = #{id}")
     int deleteFeedbackById(int id);
 
-    // 根据ID更新反馈状态
-    @Update("UPDATE feedback SET status = #{status}, updated_at = NOW() WHERE id = #{id}")
-    int updateFeedbackStatusById(int id, int status);
+    // 根据ID更新反馈答案、答案名称和更新时间
+    @Update("UPDATE feedback SET answer = #{answer}, answer_name = #{answerName}, status = #{status}, updated_at = NOW() WHERE id = #{id}")
+    int updateFeedbackAnswerById(int id, String answer, String answerName, int status);
 }

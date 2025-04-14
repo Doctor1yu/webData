@@ -11,15 +11,13 @@ public class FeedbackServiceImpl implements FeedbackService {
     @Autowired
     private FeedbackMapper feedbackMapper;
 
-
-
     @Override
     public int deleteFeedbackById(int id) {
         return feedbackMapper.deleteFeedbackById(id);
     }
 
     @Override
-    public int updateFeedbackStatusById(int id, int status) {
-        return feedbackMapper.updateFeedbackStatusById(id, status);
+    public int updateFeedbackAnswerById(int id, String answer, String answerName) {
+        return feedbackMapper.updateFeedbackAnswerById(id, answer, answerName, 2);
     }
 }

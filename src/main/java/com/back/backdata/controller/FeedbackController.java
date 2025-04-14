@@ -22,9 +22,9 @@ public class FeedbackController {
         }
     }
 
-    @PutMapping("/update")
-    public Result updateFeedbackStatusById(@RequestParam int id, @RequestParam int status) {
-        int result = feedbackService.updateFeedbackStatusById(id, status);
+    @PatchMapping("/updateAnswer")
+    public Result updateFeedbackAnswerById(@RequestParam int id, @RequestParam String answer, @RequestParam String answerName) {
+        int result = feedbackService.updateFeedbackAnswerById(id, answer, answerName);
         if (result > 0) {
             return Result.success();
         } else {
